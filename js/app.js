@@ -31,6 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const updateUI = (lang, shouldGlitch = false) => {
+        const currentLangDisplay = document.getElementById('current-lang-text');
+        
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) {
@@ -54,8 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.documentElement.lang = lang;
-        if (currentLangText) {
-            currentLangText.textContent = lang.toUpperCase();
+        if (currentLangDisplay) {
+            currentLangDisplay.textContent = lang.toUpperCase();
         }
 
         if (lang === 'en') {
