@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const langDeBtn = document.getElementById('lang-de');
     const currentLangText = document.getElementById('current-lang-text');
     const langDropdown = document.getElementById('lang-dropdown');
+    const langMenu = document.getElementById('lang-menu');
+    const langCurrent = document.getElementById('lang-current');
 
     const loadTranslations = async () => {
         try {
@@ -52,7 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.documentElement.lang = lang;
-        if (currentLangText) currentLangText.textContent = lang.toUpperCase();
+        if (currentLangText) {
+            currentLangText.textContent = lang.toUpperCase();
+        }
 
         if (lang === 'en') {
             langEnBtn.classList.add('text-[#c9bfff]', 'font-bold');
@@ -67,7 +71,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         localStorage.setItem('preferred-lang', lang);
+        
+        // Close menu after selection
+        if (langMenu) {
+            langMenu.classList.remove('opacity-100', 'visible');
+            langMenu.classList.add('opacity-0', 'invisible');
+        }
     };
+
+    // Toggle dropdown
+    if (langCurrent && langMenu) {
+        langCurrent.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isVisible = langMenu.classList.contains('visible');
+            if (isVisible) {
+                langMenu.classList.remove('opacity-100', 'visible');
+                langMenu.classList.add('opacity-0', 'invisible');
+            } else {
+                langMenu.classList.add('opacity-100', 'visible');
+                langMenu.classList.remove('opacity-0', 'invisible');
+            }
+        });
+
+        document.addEventListener('click', () => {
+            langMenu.classList.remove('opacity-100', 'visible');
+            langMenu.classList.add('opacity-0', 'invisible');
+        });
+    }
 
     const glitchText = (element, targetHTML) => {
         const glitchChars = '!<>-_\\/[]{}—=+*^?#________';
