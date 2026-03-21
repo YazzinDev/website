@@ -76,8 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Close menu after selection
         if (langMenu) {
-            langMenu.classList.remove('opacity-100', 'visible');
-            langMenu.classList.add('opacity-0', 'invisible');
+            langMenu.classList.add('hidden');
         }
     };
 
@@ -85,19 +84,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (langCurrent && langMenu) {
         langCurrent.addEventListener('click', (e) => {
             e.stopPropagation();
-            const isVisible = langMenu.classList.contains('visible');
-            if (isVisible) {
-                langMenu.classList.remove('opacity-100', 'visible');
-                langMenu.classList.add('opacity-0', 'invisible');
-            } else {
-                langMenu.classList.add('opacity-100', 'visible');
-                langMenu.classList.remove('opacity-0', 'invisible');
-            }
+            langMenu.classList.toggle('hidden');
         });
 
         document.addEventListener('click', () => {
-            langMenu.classList.remove('opacity-100', 'visible');
-            langMenu.classList.add('opacity-0', 'invisible');
+            langMenu.classList.add('hidden');
         });
     }
 
