@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let translations = {};
     const langEnBtn = document.getElementById('lang-en');
     const langDeBtn = document.getElementById('lang-de');
+    const currentLangText = document.getElementById('current-lang-text');
+    const langDropdown = document.getElementById('lang-dropdown');
 
     const loadTranslations = async () => {
         try {
@@ -50,17 +52,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.documentElement.lang = lang;
+        if (currentLangText) currentLangText.textContent = lang.toUpperCase();
 
         if (lang === 'en') {
             langEnBtn.classList.add('text-[#c9bfff]', 'font-bold');
-            langEnBtn.classList.remove('text-[#e4e1e6]/40');
+            langEnBtn.classList.remove('text-[#e4e1e6]/60');
             langDeBtn.classList.remove('text-[#c9bfff]', 'font-bold');
-            langDeBtn.classList.add('text-[#e4e1e6]/40');
+            langDeBtn.classList.add('text-[#e4e1e6]/60');
         } else {
             langDeBtn.classList.add('text-[#c9bfff]', 'font-bold');
-            langDeBtn.classList.remove('text-[#e4e1e6]/40');
+            langDeBtn.classList.remove('text-[#e4e1e6]/60');
             langEnBtn.classList.remove('text-[#c9bfff]', 'font-bold');
-            langEnBtn.classList.add('text-[#e4e1e6]/40');
+            langEnBtn.classList.add('text-[#e4e1e6]/60');
         }
 
         localStorage.setItem('preferred-lang', lang);
