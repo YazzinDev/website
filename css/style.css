@@ -69,3 +69,18 @@ body {
     position: relative;
     z-index: 10;
 }
+
+/* Glitch Effect Cursor */
+.cursor {
+    display: inline-block;
+    width: 0.2em;
+    animation: blink 1.9s step-end infinite;
+    color: #c9bfff;
+    margin-left: 4px;
+    font-weight: 200;
+}
+
+@keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+}
