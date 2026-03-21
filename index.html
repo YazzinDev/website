@@ -98,21 +98,28 @@
     <div class="hidden md:flex gap-10 items-center">
       <a
         class="font-manrope tracking-tighter font-bold uppercase text-xs text-[#e4e1e6]/60 hover:text-[#c9bfff] transition-colors duration-300"
-        href="#about">About</a>
+        href="#about" data-i18n="nav_about">About</a>
       <a
         class="font-manrope tracking-tighter font-bold uppercase text-xs text-[#e4e1e6]/60 hover:text-[#c9bfff] transition-colors duration-300"
-        href="#tech-stack">Stack</a>
+        href="#tech-stack" data-i18n="nav_stack">Stack</a>
       <a
         class="font-manrope tracking-tighter font-bold uppercase text-xs text-[#e4e1e6]/60 hover:text-[#c9bfff] transition-colors duration-300"
-        href="#projects">Work</a>
+        href="#projects" data-i18n="nav_work">Work</a>
       <a
         class="font-manrope tracking-tighter font-bold uppercase text-xs text-[#e4e1e6]/60 hover:text-[#c9bfff] transition-colors duration-300"
-        href="#web-tools">Tools</a>
+        href="#web-tools" data-i18n="nav_tools">Tools</a>
     </div>
-    <button
-      class="bg-gradient-primary text-white px-6 py-2 rounded-lg font-label font-bold text-sm tracking-widest uppercase active:scale-95 duration-200">
-      Contact
-    </button>
+    <div class="flex items-center gap-6">
+      <div class="flex items-center gap-2 font-label text-[10px] tracking-widest uppercase text-[#e4e1e6]/40">
+        <button id="lang-en" class="hover:text-[#c9bfff] transition-colors duration-300">EN</button>
+        <span class="opacity-20">|</span>
+        <button id="lang-de" class="hover:text-[#c9bfff] transition-colors duration-300">DE</button>
+      </div>
+      <button
+        class="bg-gradient-primary text-white px-6 py-2 rounded-lg font-label font-bold text-sm tracking-widest uppercase active:scale-95 duration-200" data-i18n="nav_contact">
+        Contact
+      </button>
+    </div>
   </div>
 </nav>
 <main>
@@ -124,24 +131,24 @@
     <div class="max-w-[1440px] mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-12 items-center relative z-10">
       <div class="md:col-span-8">
         <div class="mb-8">
-          <span class="font-label text-secondary tracking-[0.3em] uppercase text-[10px] md:text-xs mb-4 md:mb-6 block">Full-Stack Software Developer</span>
-          <h2 class="font-headline text-2xl md:text-3xl lg:text-4xl font-bold text-on-surface mb-2">Hey, I'm <span
+          <span class="font-label text-secondary tracking-[0.3em] uppercase text-[10px] md:text-xs mb-4 md:mb-6 block" data-i18n="hero_role">Full-Stack Software Developer</span>
+          <h2 class="font-headline text-2xl md:text-3xl lg:text-4xl font-bold text-on-surface mb-2" data-i18n="hero_greeting">Hey, I'm <span
             class="text-gradient">Yassin Kuczma</span>.</h2>
         </div>
-        <h1 class="font-headline text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-extrabold tracking-tighter leading-[0.9] mb-8">Building <span
+        <h1 class="font-headline text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tighter leading-[0.9] mb-8 max-w-4xl" data-i18n="hero_title">Building <span
           class="text-gradient">Modern</span><br/>Systems.</h1>
-        <p class="font-body text-lg md:text-xl text-on-surface-variant max-w-xl leading-relaxed">
+        <p class="font-body text-lg md:text-xl text-on-surface-variant max-w-xl leading-relaxed" data-i18n="hero_description">
           Architecting scalable Java ecosystems and robust Spring Boot applications. Dedicated to high-performance code
           and clean engineering.
         </p>
         <div class="mt-8 md:mt-12 flex flex-wrap gap-6 items-center">
           <a
             class="bg-gradient-primary px-8 py-4 rounded-xl font-label font-bold tracking-tight text-white hover:shadow-[0_0_30px_rgba(93,63,211,0.3)] transition-all"
-            href="#projects">
+            href="#projects" data-i18n="hero_cta_portfolio">
             View Portfolio
           </a>
           <a class="text-on-surface flex items-center gap-2 font-label group" href="#tech-stack">
-            My Tech Stack
+            <span data-i18n="hero_cta_stack">My Tech Stack</span>
             <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
           </a>
         </div>
@@ -163,8 +170,8 @@
       <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-20">
         <div class="max-w-2xl">
           <span
-            class="font-label text-on-surface-variant tracking-widest uppercase text-xs mb-4 block">Core Expertise</span>
-          <h2 class="font-headline text-5xl md:text-6xl font-bold tracking-tighter mb-6 text-on-surface">Built for
+            class="font-label text-on-surface-variant tracking-widest uppercase text-xs mb-4 block" data-i18n="stack_label">Core Expertise</span>
+          <h2 class="font-headline text-5xl md:text-6xl font-bold tracking-tighter mb-6 text-on-surface" data-i18n="stack_title">Built for
             performance,<br/>engineered
             for scale.</h2>
         </div>
@@ -177,8 +184,8 @@
             class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
             <span class="material-symbols-outlined text-3xl">terminal</span>
           </div>
-          <h4 class="font-headline text-xl font-bold mb-2 text-on-surface">Java</h4>
-          <p class="font-body text-sm text-on-surface/70">Architecting <b>modular, high-performance backends</b> with
+          <h4 class="font-headline text-xl font-bold mb-2 text-on-surface" data-i18n="stack_java_title">Java</h4>
+          <p class="font-body text-sm text-on-surface/70" data-i18n="stack_java_desc">Architecting <b>modular, high-performance backends</b> with
             <b>Spring Boot</b>, focused on <b>scalability</b> and <b>clean design</b>.</p>
         </div>
         <div
@@ -188,8 +195,8 @@
             class="w-16 h-16 rounded-full bg-secondary/10 flex items-center justify-center text-secondary mb-6 group-hover:bg-secondary group-hover:text-on-secondary transition-all duration-300">
             <span class="material-symbols-outlined text-3xl">web</span>
           </div>
-          <h4 class="font-headline text-xl font-bold mb-2 text-on-surface">Web &amp; Fullstack</h4>
-          <p class="font-body text-sm text-on-surface/70">Crafting <b>modern, responsive user experiences</b> and <b>seamless
+          <h4 class="font-headline text-xl font-bold mb-2 text-on-surface" data-i18n="stack_web_title">Web &amp; Fullstack</h4>
+          <p class="font-body text-sm text-on-surface/70" data-i18n="stack_web_desc">Crafting <b>modern, responsive user experiences</b> and <b>seamless
             REST APIs</b>, prioritized for <b>performance</b> and <b>clean code</b>.</p>
         </div>
         <div
@@ -199,8 +206,8 @@
             class="w-16 h-16 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary mb-6 group-hover:bg-tertiary group-hover:text-on-tertiary transition-all duration-300">
             <span class="material-symbols-outlined text-3xl">settings_suggest</span>
           </div>
-          <h4 class="font-headline text-xl font-bold mb-2 text-on-surface">DevOps</h4>
-          <p class="font-body text-sm text-on-surface/70">Automating delivery with <b>Docker</b> and <b>CI/CD
+          <h4 class="font-headline text-xl font-bold mb-2 text-on-surface" data-i18n="stack_devops_title">DevOps</h4>
+          <p class="font-body text-sm text-on-surface/70" data-i18n="stack_devops_desc">Automating delivery with <b>Docker</b> and <b>CI/CD
             pipelines</b>, while maintaining high-integrity <b>PostgreSQL</b> databases.</p>
         </div>
         <div
@@ -210,8 +217,8 @@
             class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
             <span class="material-symbols-outlined text-3xl">sports_esports</span>
           </div>
-          <h4 class="font-headline text-xl font-bold mb-2 text-on-surface">Game Development</h4>
-          <p class="font-body text-sm text-on-surface/70">Building <b>immersive mechanics</b> and complex <b>gameplay
+          <h4 class="font-headline text-xl font-bold mb-2 text-on-surface" data-i18n="stack_game_title">Game Development</h4>
+          <p class="font-body text-sm text-on-surface/70" data-i18n="stack_game_desc">Building <b>immersive mechanics</b> and complex <b>gameplay
             systems</b> in <b>Unreal Engine</b>, blending technical <b>C++</b> with <b>creative design</b>.</p>
         </div>
       </div>
@@ -240,12 +247,12 @@
     <div class="max-w-[1440px] mx-auto">
       <div class="flex justify-between items-end mb-20">
         <div>
-          <h2 class="font-headline text-5xl font-bold tracking-tighter mb-4">Selected Works</h2>
-          <p class="font-body text-on-surface-variant max-w-md">Backend architectures, engine development, and
+          <h2 class="font-headline text-5xl font-bold tracking-tighter mb-4" data-i18n="projects_title">Selected Works</h2>
+          <p class="font-body text-on-surface-variant max-w-md" data-i18n="projects_subtitle">Backend architectures, engine development, and
             open-source contributions.</p>
         </div>
         <div class="hidden md:block">
-          <span class="font-label text-on-surface-variant text-sm">DEVELOPMENT &amp; ENGINEERING</span>
+          <span class="font-label text-on-surface-variant text-sm" data-i18n="projects_label">DEVELOPMENT &amp; ENGINEERING</span>
         </div>
       </div>
       <div class="flex justify-center">
@@ -263,12 +270,12 @@
             </div>
           </div>
           <h3 class="font-headline text-2xl font-bold mb-2 text-on-surface">Terrafix</h3>
-          <p class="font-body text-on-surface/70 text-sm mb-6">A factory game about plants fighting back against the
+          <p class="font-body text-on-surface/70 text-sm mb-6" data-i18n="projects_terrafix_desc">A factory game about plants fighting back against the
             machines. Made in 48h.</p>
           <a
             class="inline-flex items-center justify-center gap-2 w-full bg-primary text-white font-label font-bold py-3 rounded-lg text-sm tracking-widest uppercase hover:brightness-110 transition-all"
             href="#">
-            View Project <span class="material-symbols-outlined text-sm">arrow_outward</span>
+            <span data-i18n="projects_view">View Project</span> <span class="material-symbols-outlined text-sm">arrow_outward</span>
           </a>
         </div>
       </div>
@@ -278,8 +285,8 @@
   <section class="py-32 px-8 relative bg-surface-container-lowest" id="web-tools">
     <div class="max-w-[1440px] mx-auto">
       <div class="text-center mb-24">
-        <span class="font-label text-on-surface-variant tracking-widest uppercase text-xs">Utility Forge</span>
-        <h2 class="font-headline text-5xl font-bold mt-4 tracking-tight">Open Source Tooling</h2>
+        <span class="font-label text-on-surface-variant tracking-widest uppercase text-xs" data-i18n="tools_label">Utility Forge</span>
+        <h2 class="font-headline text-5xl font-bold mt-4 tracking-tight" data-i18n="tools_title">Open Source Tooling</h2>
       </div>
       <div class="flex justify-center">
         <!-- Coming Soon Card -->
@@ -289,15 +296,15 @@
           <div class="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center text-primary mb-6">
             <span class="material-symbols-outlined">construction</span>
           </div>
-          <h4 class="font-headline text-xl font-bold mb-4 text-on-surface">Coming Soon</h4>
-          <p class="font-body text-sm text-on-surface-variant mb-8 leading-relaxed">
+          <h4 class="font-headline text-xl font-bold mb-4 text-on-surface" data-i18n="tools_coming_soon_title">Coming Soon</h4>
+          <p class="font-body text-sm text-on-surface-variant mb-8 leading-relaxed" data-i18n="tools_coming_soon_desc">
             I'm currently crafting high-performance, developer-focused open source tools.
             Follow my GitHub for updates on upcoming releases.
           </p>
           <div class="mt-auto">
             <a href="https://github.com/yazzin"
                class="inline-flex items-center justify-center gap-2 w-full bg-primary text-white font-label font-bold py-3 rounded-lg text-sm tracking-widest uppercase hover:brightness-110 transition-all">
-              Follow on GitHub <span class="material-symbols-outlined text-sm">arrow_outward</span>
+              <span data-i18n="tools_github_cta">Follow on GitHub</span> <span class="material-symbols-outlined text-sm">arrow_outward</span>
             </a>
           </div>
         </div>
@@ -308,9 +315,9 @@
   <section class="py-32 px-8" id="contact">
     <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-20">
       <div>
-        <h2 class="font-headline text-6xl font-bold tracking-tighter mb-8">Let's <br/><span class="text-gradient">Collaborate.</span>
+        <h2 class="font-headline text-6xl font-bold tracking-tighter mb-8" data-i18n="contact_title">Let's <br/><span class="text-gradient">Collaborate.</span>
         </h2>
-        <p class="font-body text-on-surface-variant text-lg mb-12 max-w-sm">
+        <p class="font-body text-on-surface-variant text-lg mb-12 max-w-sm" data-i18n="contact_subtitle">
           Currently available for backend engineering roles.
         </p>
         <div class="space-y-6">
@@ -334,27 +341,27 @@
         <form class="space-y-8">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="space-y-2">
-              <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Full Name</label>
+              <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant" data-i18n="contact_form_name">Full Name</label>
               <input
                 class="w-full bg-surface-container-highest border-none rounded-lg focus:ring-1 focus:ring-primary/40 p-4 text-sm"
-                placeholder="John Doe" type="text"/>
+                placeholder="John Doe" type="text" data-i18n-placeholder="contact_form_placeholder_name"/>
             </div>
             <div class="space-y-2">
-              <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Email Address</label>
+              <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant" data-i18n="contact_form_email">Email Address</label>
               <input
                 class="w-full bg-surface-container-highest border-none rounded-lg focus:ring-1 focus:ring-primary/40 p-4 text-sm"
-                placeholder="john@example.com" type="email"/>
+                placeholder="john@example.com" type="email" data-i18n-placeholder="contact_form_placeholder_email"/>
             </div>
           </div>
           <div class="space-y-2">
-            <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Message</label>
+            <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant" data-i18n="contact_form_message">Message</label>
             <textarea
               class="w-full bg-surface-container-highest border-none rounded-lg focus:ring-1 focus:ring-primary/40 p-4 text-sm"
-              placeholder="Tell me about your project goals..." rows="4"></textarea>
+              placeholder="Tell me about your project goals..." rows="4" data-i18n-placeholder="contact_form_placeholder_message"></textarea>
           </div>
           <button
             class="w-full bg-gradient-primary py-4 rounded-xl font-label font-bold uppercase tracking-[0.2em] text-white hover:opacity-90 transition-opacity"
-            type="submit">
+            type="submit" data-i18n="contact_form_submit">
             Send Inquiry
           </button>
         </form>
@@ -372,7 +379,7 @@
       <a class="font-inter text-sm text-[#e4e1e6]/40 hover:text-primary transition-all duration-300 hover:underline"
          href="#">GitHub</a>
     </div>
-    <div class="font-inter text-sm text-[#e4e1e6]/40">
+    <div class="font-inter text-sm text-[#e4e1e6]/40" data-i18n="footer_rights">
       © 2026 Yazzin. All rights reserved.
     </div>
   </div>
