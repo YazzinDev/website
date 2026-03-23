@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('.glow-card');
     
+    if (typeof gsap !== 'undefined') {
+        gsap.set("#tech-stack .glow-card", { autoAlpha: 0, y: 50, "--border-opacity": 0 });
+    }
+
     cards.forEach(card => {
         card.addEventListener('mousemove', e => {
             const rect = card.getBoundingClientRect();
@@ -20,11 +24,91 @@ document.addEventListener('DOMContentLoaded', () => {
     const langMenu = document.getElementById('lang-menu');
     const langCurrent = document.getElementById('lang-current');
 
+    let gsapInitialized = false;
+    const initGSAP = () => {
+        if (gsapInitialized) return;
+        gsapInitialized = true;
+        
+        gsap.registerPlugin(ScrollTrigger);
+
+        const stackCards = document.querySelectorAll("#tech-stack .glow-card");
+        const shineSweeps = document.querySelectorAll("#tech-stack .shine-sweep");
+        
+        if (stackCards.length > 0) {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#tech-stack",
+                    start: "top 85%",
+                    toggleActions: "play none none none",
+                    once: true
+                }
+            });
+
+            tl.to(stackCards, {
+                y: 0,
+                autoAlpha: 1,
+                duration: 0.8,
+                stagger: 0.1,
+                ease: "power2.out",
+                clearProps: "transform"
+            });
+
+            tl.to(stackCards, {
+                "--border-opacity": 1,
+                duration: 1.2,
+                stagger: 0.1,
+                ease: "power2.inOut"
+            }, 0.3);
+
+            if (shineSweeps.length > 0) {
+                tl.fromTo(shineSweeps, {
+                    x: "-100%",
+                    opacity: 0,
+                    display: "block",
+                    skewX: -15
+                }, {
+                    x: "100%",
+                    opacity: 0.8,
+                    duration: 1.2,
+                    stagger: 0.2,
+                    ease: "power2.inOut"
+                }, 0.5);
+
+                tl.set(shineSweeps, { display: "none", opacity: 0 });
+            }
+        }
+
+        document.querySelectorAll('section').forEach(section => {
+            const elements = section.querySelectorAll('h2:not([data-i18n="hero_greeting"]), .font-label:not(a):not(button)');
+            if (elements.length > 0) {
+                gsap.from(elements, {
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 85%",
+                        toggleActions: "play none none none",
+                        once: true
+                    },
+                    y: 30,
+                    opacity: 0,
+                    duration: 0.6,
+                    stagger: 0.1,
+                    ease: "power2.out",
+                    clearProps: "transform,opacity"
+                });
+            }
+        });
+        
+        ScrollTrigger.refresh();
+    };
+
     const loadTranslations = async () => {
         try {
             const response = await fetch('translations.json');
             translations = await response.json();
             initLanguage();
+            requestAnimationFrame(() => {
+                initGSAP();
+            });
         } catch (error) {
             console.error('Error loading translations:', error);
         }
@@ -74,13 +158,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         localStorage.setItem('preferred-lang', lang);
         
-        // Close menu after selection
         if (langMenu) {
             langMenu.classList.add('hidden');
         }
     };
 
-    // Toggle dropdown
     if (langCurrent && langMenu) {
         langCurrent.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -94,6 +176,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const glitchText = (element, targetHTML) => {
         const glitchChars = '!<>-_\\/[]{}—=+*^?#________';
+        
+        const originalHTML = element.innerHTML;
+        element.innerHTML = targetHTML;
+        const targetHeight = element.offsetHeight;
+        element.style.minHeight = `${targetHeight}px`;
         
         const temp = document.createElement('div');
         temp.innerHTML = targetHTML;
@@ -165,6 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 25);
             } else {
                 element.innerHTML = targetHTML + cursor;
+                element.style.minHeight = '';
             }
         };
         
