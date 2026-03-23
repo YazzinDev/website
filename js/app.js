@@ -1,21 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Interactive Card Glow Effect ---
     const cards = document.querySelectorAll('.glow-card');
-    
+
+    // Initial state for GSAP-animated elements to prevent flash of unstyled content
     if (typeof gsap !== 'undefined') {
         gsap.set("#tech-stack .glow-card", { autoAlpha: 0, y: 50, "--border-opacity": 0 });
     }
 
+    // Update CSS variables on mouse move to power the radial glow effect
     cards.forEach(card => {
         card.addEventListener('mousemove', e => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            
+
             card.style.setProperty('--mouse-x', `${x}px`);
             card.style.setProperty('--mouse-y', `${y}px`);
         });
     });
 
+    // --- Translation & Language State ---
     let translations = {};
     const langEnBtn = document.getElementById('lang-en');
     const langDeBtn = document.getElementById('lang-de');
@@ -24,16 +28,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const langMenu = document.getElementById('lang-menu');
     const langCurrent = document.getElementById('lang-current');
 
+    // --- GSAP Scroll Animations ---
     let gsapInitialized = false;
     const initGSAP = () => {
         if (gsapInitialized) return;
         gsapInitialized = true;
-        
+
         gsap.registerPlugin(ScrollTrigger);
 
+        // Tech stack entry animation (cards sliding up and fading in)
         const stackCards = document.querySelectorAll("#tech-stack .glow-card");
         const shineSweeps = document.querySelectorAll("#tech-stack .shine-sweep");
-        
+
         if (stackCards.length > 0) {
             const tl = gsap.timeline({
                 scrollTrigger: {
@@ -53,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearProps: "transform"
             });
 
+            // Fade in card borders
             tl.to(stackCards, {
                 "--border-opacity": 1,
                 duration: 1.2,
@@ -60,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ease: "power2.inOut"
             }, 0.3);
 
+            // One-time "shine" sweep across tech cards
             if (shineSweeps.length > 0) {
                 tl.fromTo(shineSweeps, {
                     x: "-100%",
@@ -78,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        // Generic entrance animation for section headings and labels
         document.querySelectorAll('section').forEach(section => {
             const elements = section.querySelectorAll('h2:not([data-i18n="hero_greeting"]), .font-label:not(a):not(button)');
             if (elements.length > 0) {
@@ -97,26 +106,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
-        
+
         ScrollTrigger.refresh();
     };
 
+    // --- Translation Loading ---
     const loadTranslations = async () => {
         try {
             const response = await fetch('translations.json');
             translations = await response.json();
             initLanguage();
             requestAnimationFrame(() => {
-                initGSAP();
+                initGSAP(); // Initialize animations after text is loaded
             });
         } catch (error) {
             console.error('Error loading translations:', error);
         }
     };
 
+    // Updates all DOM elements with [data-i18n] attributes
     const updateUI = (lang, shouldGlitch = false) => {
         const currentLangDisplay = document.getElementById('current-lang-text');
-        
+
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) {
@@ -132,6 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Handle placeholders for forms
         document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
             const key = el.getAttribute('data-i18n-placeholder');
             if (translations[lang] && translations[lang][key]) {
@@ -144,6 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentLangDisplay.textContent = lang.toUpperCase();
         }
 
+        // Toggle active button styles
         if (lang === 'en') {
             langEnBtn.classList.add('text-[#c9bfff]', 'font-bold');
             langEnBtn.classList.remove('text-[#e4e1e6]/60');
@@ -157,12 +170,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         localStorage.setItem('preferred-lang', lang);
-        
+
         if (langMenu) {
             langMenu.classList.add('hidden');
         }
     };
 
+    // --- Language Selector Dropdown Logic ---
     if (langCurrent && langMenu) {
         langCurrent.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -174,17 +188,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    /**
+     * Glitch Animation Effect
+     * Progressively types out HTML content while injecting random glitch characters.
+     * Preserves HTML structure (tags like <br/> or <span>) during the process.
+     */
     const glitchText = (element, targetHTML) => {
         const glitchChars = '!<>-_\\/[]{}—=+*^?#________';
-        
+
         const originalHTML = element.innerHTML;
         element.innerHTML = targetHTML;
         const targetHeight = element.offsetHeight;
-        element.style.minHeight = `${targetHeight}px`;
-        
+        element.style.minHeight = `${targetHeight}px`; // Prevent layout jump
+
         const temp = document.createElement('div');
         temp.innerHTML = targetHTML;
-        
+
+        // Maps every character to its position and associated parent HTML tags
         const getCharMap = (node, currentTags = []) => {
             let map = [];
             node.childNodes.forEach(child => {
@@ -211,7 +231,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const charMap = getCharMap(temp);
         let index = 0;
         const cursor = '<span class="cursor">_</span>';
-        
+
+        // Reconstructs the HTML up to the current index, adding glitch characters if requested
         const render = (idx, showGlitch = false) => {
             let html = '';
             const currentMap = charMap.slice(0, idx);
@@ -241,7 +262,8 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         element.innerHTML = cursor;
-        
+
+        // Recursive typing loop
         const type = () => {
             if (index < charMap.length) {
                 render(index, true);
@@ -255,15 +277,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 element.style.minHeight = '';
             }
         };
-        
+
         setTimeout(type, 0);
     };
 
+    // --- Initialization ---
     const initLanguage = () => {
         const savedLang = localStorage.getItem('preferred-lang');
         const browserLang = navigator.language.startsWith('de') ? 'de' : 'en';
         const initialLang = savedLang || browserLang;
-        updateUI(initialLang, true);
+        updateUI(initialLang, true); // True triggers glitch effect on first load
     };
 
     langEnBtn.addEventListener('click', () => updateUI('en'));
