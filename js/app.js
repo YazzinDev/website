@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial state for GSAP-animated elements to prevent flash of unstyled content
     if (typeof gsap !== 'undefined') {
-        gsap.set("#tech-stack .glow-card", { autoAlpha: 0, y: 50, "--border-opacity": 0 });
+        gsap.set(".glow-card", { autoAlpha: 0, y: 50, "--border-opacity": 0 });
     }
 
     // Update CSS variables on mouse move to power the radial glow effect
@@ -105,6 +105,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     clearProps: "transform,opacity"
                 });
             }
+        });
+
+        // Generic entrance animation for any other cards that aren't in the tech stack
+        const otherCards = document.querySelectorAll(".glow-card:not(#tech-stack .glow-card)");
+        otherCards.forEach(card => {
+            gsap.to(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 85%",
+                    toggleActions: "play none none none",
+                    once: true
+                },
+                y: 0,
+                autoAlpha: 1,
+                "--border-opacity": 1,
+                duration: 0.8,
+                ease: "power2.out",
+                clearProps: "transform"
+            });
         });
 
         ScrollTrigger.refresh();
