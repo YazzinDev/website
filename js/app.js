@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial state for GSAP-animated elements to prevent flash of unstyled content
     if (typeof gsap !== 'undefined') {
-        gsap.set(".glow-card", { autoAlpha: 0, y: 50, "--border-opacity": 0 });
+        // No initial set needed for .shine-sweep as it is display:none in CSS
     }
 
     // Update CSS variables on mouse move to power the radial glow effect
@@ -50,18 +50,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            tl.to(stackCards, {
-                y: 0,
-                autoAlpha: 1,
+            tl.from(stackCards, {
+                y: 50,
+                autoAlpha: 0,
                 duration: 0.8,
                 stagger: 0.1,
                 ease: "power2.out",
-                clearProps: "transform"
+                clearProps: "y,autoAlpha"
             });
 
             // Fade in card borders
-            tl.to(stackCards, {
-                "--border-opacity": 1,
+            tl.from(stackCards, {
+                "--border-opacity": 0,
                 duration: 1.2,
                 stagger: 0.1,
                 ease: "power2.inOut"
@@ -69,6 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // One-time "shine" sweep across tech cards
             if (shineSweeps.length > 0) {
+                // Ensure they are hidden initially within the timeline until their turn
+                tl.set(shineSweeps, { display: "none", opacity: 0 }, 0);
+
                 tl.fromTo(shineSweeps, {
                     x: "-100%",
                     opacity: 0,
@@ -79,10 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     opacity: 0.8,
                     duration: 1.2,
                     stagger: 0.2,
-                    ease: "power2.inOut"
-                }, 0.5);
-
-                tl.set(shineSweeps, { display: "none", opacity: 0 });
+                    ease: "power2.inOut",
+                    onComplete: function() {
+                        gsap.set(this.targets(), { display: "none", opacity: 0 });
+                    }
+                }, 0.5); // Start at 0.5s absolute time for better overlap
             }
         }
 
@@ -105,25 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     clearProps: "transform,opacity"
                 });
             }
-        });
-
-        // Generic entrance animation for any other cards that aren't in the tech stack
-        const otherCards = document.querySelectorAll(".glow-card:not(#tech-stack .glow-card)");
-        otherCards.forEach(card => {
-            gsap.to(card, {
-                scrollTrigger: {
-                    trigger: card,
-                    start: "top 85%",
-                    toggleActions: "play none none none",
-                    once: true
-                },
-                y: 0,
-                autoAlpha: 1,
-                "--border-opacity": 1,
-                duration: 0.8,
-                ease: "power2.out",
-                clearProps: "transform"
-            });
         });
 
         ScrollTrigger.refresh();
