@@ -1,4 +1,104 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Hero Canvas Animation (Simplex Noise Grid) ---
+    class SimplexNoise {
+        constructor() {
+            this.p = new Uint8Array(256);
+            this.perm = new Uint8Array(512);
+            for (let i = 0; i < 256; i++) this.p[i] = i;
+            for (let i = 255; i > 0; i--) {
+                const r = Math.floor(Math.random() * (i + 1));
+                [this.p[i], this.p[r]] = [this.p[r], this.p[i]];
+            }
+            for (let i = 0; i < 512; i++) this.perm[i] = this.p[i & 255];
+        }
+
+        noise2D(x, y) {
+            const F2 = 0.5 * (Math.sqrt(3.0) - 1.0);
+            const G2 = (3.0 - Math.sqrt(3.0)) / 6.0;
+            let s = (x + y) * F2;
+            let i = Math.floor(x + s), j = Math.floor(y + s);
+            let t = (i + j) * G2;
+            let x0 = x - (i - t), y0 = y - (j - t);
+            let i1, j1;
+            if (x0 > y0) { i1 = 1; j1 = 0; } else { i1 = 0; j1 = 1; }
+            let x1 = x0 - i1 + G2, y1 = y0 - j1 + G2;
+            let x2 = x0 - 1.0 + 2.0 * G2, y2 = y0 - 1.0 + 2.0 * G2;
+            let ii = i & 255, jj = j & 255;
+            let g0 = this.grad(this.perm[ii + this.perm[jj]], x0, y0);
+            let g1 = this.grad(this.perm[ii + i1 + this.perm[jj + j1]], x1, y1);
+            let g2 = this.grad(this.perm[ii + 1 + this.perm[jj + 1]], x2, y2);
+            let n0 = Math.max(0, 0.5 - x0 * x0 - y0 * y0) ** 4 * g0;
+            let n1 = Math.max(0, 0.5 - x1 * x1 - y1 * y1) ** 4 * g1;
+            let n2 = Math.max(0, 0.5 - x2 * x2 - y2 * y2) ** 4 * g2;
+            return 70.0 * (n0 + n1 + n2);
+        }
+
+        grad(hash, x, y) {
+            const h = hash & 7;
+            const u = h < 4 ? x : y;
+            const v = h < 4 ? y : x;
+            return ((h & 1) ? -u : u) + ((h & 2) ? -2.0 * v : 2.0 * v);
+        }
+    }
+
+    const initHeroCanvas = () => {
+        const canvas = document.getElementById('hero-canvas');
+        if (!canvas) return;
+
+        // --- Animation Configuration ---
+        const config = {
+            spacing: 32,          // Distance between dots
+            dotRadius: 1,         // Size of each dot
+            dotColor: '#5D3FD3',  // Color of the dots
+            noiseScale: 0.05,     // Scale of noise waves (lower = larger waves)
+            speed: 0.002,         // Scrolling speed
+            minOpacity: 0.2,        // Minimum dot opacity
+            maxOpacity: 0.8       // Maximum dot opacity
+        };
+
+        const ctx = canvas.getContext('2d');
+        const noise = new SimplexNoise();
+        let width, height, rows, cols;
+        let time = 0;
+
+        const resize = () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            cols = Math.ceil(width / config.spacing) + 1;
+            rows = Math.ceil(height / config.spacing) + 1;
+        };
+
+        const animate = () => {
+            time += config.speed;
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = config.dotColor;
+
+            for (let i = 0; i < cols; i++) {
+                for (let j = 0; j < rows; j++) {
+                    // Calculate noise for each dot (-1 to 1)
+                    const n = noise.noise2D(i * config.noiseScale, (j * config.noiseScale) + time);
+
+                    // Map noise (-1 to 1) to requested opacity range
+                    const opacity = config.minOpacity + (n + 1) * 0.5 * (config.maxOpacity - config.minOpacity);
+
+                    if (opacity > 0.01) {
+                        ctx.globalAlpha = opacity;
+                        ctx.beginPath();
+                        ctx.arc(i * config.spacing, j * config.spacing, config.dotRadius, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        };
+
+        window.addEventListener('resize', resize);
+        resize();
+        animate();
+    };
+
+    initHeroCanvas();
+
     // --- Interactive Card Glow Effect ---
     const cards = document.querySelectorAll('.glow-card');
 
@@ -61,24 +161,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // One-time "shine" sweep across tech cards
             if (shineSweeps.length > 0) {
-                // Ensure they are hidden initially within the timeline until their turn
-                tl.set(shineSweeps, { display: "none", opacity: 0 }, 0);
+                shineSweeps.forEach((sweep, index) => {
+                    const sweepStartTime = 0.5 + (index * 0.15); // Stagger start times
 
-                tl.fromTo(shineSweeps, {
-                    x: "-100%",
-                    opacity: 0,
-                    display: "block",
-                    skewX: -15
-                }, {
-                    x: "100%",
-                    opacity: 0.8,
-                    duration: 1.2,
-                    stagger: 0.2,
-                    ease: "power2.inOut",
-                    onComplete: function() {
-                        gsap.set(this.targets(), { display: "none", opacity: 0 });
-                    }
-                }, 0.5); // Start at 0.5s absolute time for better overlap
+                    // Combine move and initial fade in a single fromTo
+                    tl.fromTo(sweep, {
+                        x: "-100%",
+                        opacity: 0,
+                        display: "block",
+                        skewX: -15
+                    }, {
+                        x: "100%",
+                        opacity: 1,
+                        duration: 1.2,
+                        ease: "power2.inOut",
+                        // Per-target fade out via nested timeline logic for robustness
+                        onStart: function() {
+                            gsap.to(sweep, {
+                                opacity: 0,
+                                duration: 0.4,
+                                delay: 0.8,
+                                ease: "power2.out",
+                                onComplete: () => gsap.set(sweep, { display: "none" })
+                            });
+                        }
+                    }, sweepStartTime);
+                });
             }
         }
 
