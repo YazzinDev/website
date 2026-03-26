@@ -59,14 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearProps: "y,autoAlpha"
             });
 
-            // Fade in card borders
-            tl.from(stackCards, {
-                "--border-opacity": 0,
-                duration: 1.2,
-                stagger: 0.1,
-                ease: "power2.inOut"
-            }, 0.3);
-
             // One-time "shine" sweep across tech cards
             if (shineSweeps.length > 0) {
                 // Ensure they are hidden initially within the timeline until their turn
