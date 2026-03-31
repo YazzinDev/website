@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "about": "Über mich",
+    "stack": "Tech Stack",
+    "work": "Projekte",
+    "tools": "Tools",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "role": "Full-Stack Softwareentwickler",
+    "greeting": "Hey, ich bin",
+    "title": "Damit <gradient>Moderne</gradient><br/>Systeme entstehen",
+    "description": "Architektur skalierbarer Java-Ökosysteme und robuster Spring Boot Anwendungen. Fokus auf High-Performance Code und Clean Engineering.",
+    "cta_portfolio": "Portfolio ansehen",
+    "cta_stack": "Mein Tech Stack"
+  },
+  "stack": {
+    "label": "Kernkompetenzen",
+    "title": "Auf Performance ausgelegt,<br/>für Skalierung entwickelt.",
+    "java": {
+      "title": "Java",
+      "desc": "Architektur <b>modularer, leistungsstarker Backends</b> mit <b>Spring Boot</b>, Fokus auf <b>Skalierbarkeit</b> und <b>sauberes Design</b>."
+    },
+    "web": {
+      "title": "Web & Fullstack",
+      "desc": "Erstellung <b>moderner, responsiver Nutzererlebnisse</b> und <b>nahtloser REST-APIs</b>, optimiert für <b>Performance</b> und <b>Clean Code</b>."
+    },
+    "devops": {
+      "title": "DevOps",
+      "desc": "Automatisierung der Auslieferung mit <b>Docker</b> und <b>CI/CD Pipelines</b> sowie Wartung hochintegritärer <b>PostgreSQL</b> Datenbanken."
+    },
+    "game": {
+      "title": "Game Development",
+      "desc": "Entwicklung <b>immersiver Mechaniken</b> und komplexer <b>Gameplay-Systeme</b> in der <b>Unreal Engine</b>, Verbindung von technischem <b>C++</b> mit <b>kreativem Design</b>."
+    },
+    "tags": [
+      "Scrum", "Agile Entwicklung", "Agentic Coding", "Softwarearchitektur", "Microservices", "Deployment", "Test Driven Development"
+    ]
+  },
+  "projects": {
+    "label": "ENTWICKLUNG & ENGINEERING",
+    "title": "Ausgewählte Arbeiten",
+    "description": "Backend-Architekturen, Engine-Entwicklung und Open-Source-Beiträge.",
+    "terrafix": {
+      "title": "Terrafix",
+      "badge": "🏆 1. Platz HHU Game Jam",
+      "desc": "Ein Factory-Game, in dem Pflanzen gegen Maschinen kämpfen. Entwickelt in 48 Stunden.",
+      "cta": "Projekt ansehen"
+    }
+  },
+  "tools": {
+    "label": "Utility Forge",
+    "title": "Open Source Tooling",
+    "coming_soon": {
+      "title": "Demnächst verfügbar",
+      "desc": "Ich entwickle derzeit leistungsstarke, entwicklerorientierte Open-Source-Tools. Folgen Sie meinem GitHub für Updates zu kommenden Releases.",
+      "cta": "Auf GitHub folgen"
+    }
+  },
+  "contact": {
+    "title": "Lass uns <br/><gradient>zusammenarbeiten.</gradient>",
+    "description": "Aktuell verfügbar für Rollen im Backend-Engineering.",
+    "location": "Remote / Düsseldorf, DE",
+    "form": {
+      "name": "Vollständiger Name",
+      "email": "E-Mail-Adresse",
+      "message": "Nachricht",
+      "message_placeholder": "Erzähl mir von deinen Projektzielen...",
+      "submit": "Anfrage senden"
+    }
+  },
+  "footer": {
+    "copyright": "© {{year}} Yazzin. Alle Rechte vorbehalten."
+  }
+}

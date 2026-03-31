@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "about": "About",
+    "stack": "Stack",
+    "work": "Work",
+    "tools": "Tools",
+    "contact": "Contact"
+  },
+  "hero": {
+    "role": "Full-Stack Software Developer",
+    "greeting": "Hey, I'm",
+    "title": "Creating <gradient>Modern</gradient><br/>Systems",
+    "description": "Architecting scalable Java ecosystems and robust Spring Boot applications. Dedicated to high-performance code and clean engineering.",
+    "cta_portfolio": "View Portfolio",
+    "cta_stack": "My Tech Stack"
+  },
+  "stack": {
+    "label": "Core Expertise",
+    "title": "Built for performance,<br/>engineered for scale.",
+    "java": {
+      "title": "Java",
+      "desc": "Architecting <b>modular, high-performance backends</b> with <b>Spring Boot</b>, focused on <b>scalability</b> and <b>clean design</b>."
+    },
+    "web": {
+      "title": "Web & Fullstack",
+      "desc": "Crafting <b>modern, responsive user experiences</b> and <b>seamless REST APIs</b>, prioritized for <b>performance</b> and <b>clean code</b>."
+    },
+    "devops": {
+      "title": "DevOps",
+      "desc": "Automating delivery with <b>Docker</b> and <b>CI/CD pipelines</b>, while maintaining high-integrity <b>PostgreSQL</b> databases."
+    },
+    "game": {
+      "title": "Game Development",
+      "desc": "Building <b>immersive mechanics</b> and complex <b>gameplay systems</b> in <b>Unreal Engine</b>, blending technical <b>C++</b> with <b>creative design</b>."
+    },
+    "tags": [
+      "Scrum", "Agile Development", "Agentic Coding", "Software Architecture", "Microservices", "Deployment", "Test Driven Development"
+    ]
+  },
+  "projects": {
+    "label": "DEVELOPMENT & ENGINEERING",
+    "title": "Selected Works",
+    "description": "Backend architectures, engine development, and open-source contributions.",
+    "terrafix": {
+      "title": "Terrafix",
+      "badge": "🏆 1st Place HHU Game Jam",
+      "desc": "A factory game where plants fight machines. Developed in 48 hours.",
+      "cta": "View Project"
+    }
+  },
+  "tools": {
+    "label": "Utility Forge",
+    "title": "Open Source Tooling",
+    "coming_soon": {
+      "title": "Coming Soon",
+      "desc": "I'm currently crafting high-performance, developer-focused open source tools. Follow my GitHub for updates on upcoming releases.",
+      "cta": "Follow on GitHub"
+    }
+  },
+  "contact": {
+    "title": "Let's <br/><gradient>Collaborate.</gradient>",
+    "description": "Currently available for backend engineering roles.",
+    "location": "Remote / Düsseldorf, DE",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "message": "Message",
+      "message_placeholder": "Tell me about your project goals...",
+      "submit": "Send Inquiry"
+    }
+  },
+  "footer": {
+    "copyright": "© {{year}} Yazzin. All rights reserved."
+  }
+}
