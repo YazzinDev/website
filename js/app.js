@@ -217,7 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Translation Loading ---
     const loadTranslations = async () => {
         try {
-            const response = await fetch('translations.json');
+            const path = window.TRANSLATIONS_PATH || 'translations.json';
+            const response = await fetch(path);
             translations = await response.json();
             initLanguage();
             requestAnimationFrame(() => {
