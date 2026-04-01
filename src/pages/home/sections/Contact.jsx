@@ -36,10 +36,21 @@ const Contact = () => {
 
     const formData = new FormData(e.target);
 
-    // Web3Forms public site key
+    // Web3Forms public site key (Zero-Config)
     formData.append("access_key", "6f15a172-b5d7-4a5f-9b9f-81027cf9862c");
-    // Web3Forms h-captcha-response
+
+    // Web3Forms expects h-captcha-response
     formData.append("h-captcha-response", captchaToken);
+
+    // Zero Config
+    formData.append("captcha", "true");
+
+    // Clean up: react-hcaptcha might add g-recaptcha-response automatically
+    // which can confuse the Web3Forms backend.
+    formData.delete("g-recaptcha-response");
+
+    // Debugging: Log the cleaned form data
+    console.log("Submitting form data:", Object.fromEntries(formData));
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
