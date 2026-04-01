@@ -107,7 +107,10 @@
       "email": "E-Mail-Adresse",
       "message": "Nachricht",
       "message_placeholder": "Erzähl mir von deinen Projektzielen...",
-      "submit": "Anfrage senden"
+      "submit": "Anfrage senden",
+      "success": "Nachricht erfolgreich gesendet!",
+      "error": "Etwas ist schief gelaufen. Bitte versuche es später erneut.",
+      "sending": "Wird gesendet..."
     }
   },
   "footer": {

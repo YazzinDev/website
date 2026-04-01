@@ -107,7 +107,10 @@
       "email": "Email Address",
       "message": "Message",
       "message_placeholder": "Tell me about your project goals...",
-      "submit": "Send Inquiry"
+      "submit": "Send Inquiry",
+      "success": "Message sent successfully!",
+      "error": "Something went wrong. Please try again later.",
+      "sending": "Sending..."
     }
   },
   "footer": {

@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation, Trans } from 'react-i18next';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,6 +11,58 @@ const Contact = () => {
   const sectionRef = useRef(null);
   const infoRef = useRef(null);
   const formRef = useRef(null);
+  const captchaRef = useRef(null);
+
+  const [status, setStatus] = useState({
+    submitting: false,
+    submitted: false,
+    error: false
+  });
+  const [captchaToken, setCaptchaToken] = useState(null);
+
+  const onHCaptchaChange = (token) => {
+    setCaptchaToken(token);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!captchaToken) {
+      alert("Please complete the captcha.");
+      return;
+    }
+
+    setStatus({ submitting: true, submitted: false, error: false });
+
+    const formData = new FormData(e.target);
+
+    // Web3Forms public site key
+    formData.append("access_key", "6f15a172-b5d7-4a5f-9b9f-81027cf9862c");
+    // Web3Forms h-captcha-response
+    formData.append("h-captcha-response", captchaToken);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus({ submitting: false, submitted: true, error: false });
+        setCaptchaToken(null);
+        captchaRef.current.resetCaptcha();
+        e.target.reset();
+      } else {
+        setStatus({ submitting: false, submitted: false, error: true });
+        captchaRef.current.resetCaptcha();
+      }
+    } catch (err) {
+      setStatus({ submitting: false, submitted: false, error: true });
+      captchaRef.current.resetCaptcha();
+    }
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -49,12 +102,12 @@ const Contact = () => {
       <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
         <div ref={infoRef}>
           <h2 className="font-headline text-4xl sm:text-5xl md:text-5xl font-bold tracking-tighter mb-8">
-            <Trans 
-              i18nKey="contact.title" 
-              components={{ 
+            <Trans
+              i18nKey="contact.title"
+              components={{
                 gradient: <span className="text-gradient" />,
                 br: <br />
-              }} 
+              }}
             />
           </h2>
           <p className="font-body text-on-surface-variant text-lg mb-12 max-w-sm">
@@ -77,36 +130,68 @@ const Contact = () => {
         </div>
 
         <div ref={formRef} className="bg-surface-container-low p-10 rounded-2xl gradient-border">
-          <form className="space-y-8">
+          <form onSubmit={handleSubmit} className="space-y-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="space-y-2">
                 <label className="font-label text-xs uppercase tracking-widest text-on-surface-variant">{t('contact.form.name')}</label>
-                <input 
-                  className="w-full bg-surface-container-highest border-none rounded-lg focus:ring-1 focus:ring-primary/40 p-4 text-sm text-on-surface outline-none" 
-                  placeholder="John Doe" 
-                  type="text" 
+                <input
+                  name="name"
+                  required
+                  className="w-full bg-surface-container-highest border-none rounded-lg focus:ring-1 focus:ring-primary/40 p-4 text-sm text-on-surface outline-none"
+                  placeholder="John Doe"
+                  type="text"
                 />
               </div>
               <div className="space-y-2">
                 <label className="font-label text-xs uppercase tracking-widest text-on-surface-variant">{t('contact.form.email')}</label>
-                <input 
-                  className="w-full bg-surface-container-highest border-none rounded-lg focus:ring-1 focus:ring-primary/40 p-4 text-sm text-on-surface outline-none" 
-                  placeholder="john@example.com" 
-                  type="email" 
+                <input
+                  name="email"
+                  required
+                  className="w-full bg-surface-container-highest border-none rounded-lg focus:ring-1 focus:ring-primary/40 p-4 text-sm text-on-surface outline-none"
+                  placeholder="john@example.com"
+                  type="email"
                 />
               </div>
             </div>
             <div className="space-y-2">
               <label className="font-label text-xs uppercase tracking-widest text-on-surface-variant">{t('contact.form.message')}</label>
-              <textarea 
-                className="w-full bg-surface-container-highest border-none rounded-lg focus:ring-1 focus:ring-primary/40 p-4 text-sm text-on-surface outline-none" 
-                placeholder={t('contact.form.message_placeholder')} 
+              <textarea
+                name="message"
+                required
+                className="w-full bg-surface-container-highest border-none rounded-lg focus:ring-1 focus:ring-primary/40 p-4 text-sm text-on-surface outline-none"
+                placeholder={t('contact.form.message_placeholder')}
                 rows="4"
               ></textarea>
             </div>
-            <button className="w-full bg-primary py-4 rounded-xl font-label font-bold uppercase tracking-[0.2em] text-white hover:opacity-90 transition-opacity shadow-lg shadow-primary/20">
-              {t('contact.form.submit')}
+
+            <div className="flex justify-center">
+              <HCaptcha
+                sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                onVerify={onHCaptchaChange}
+                ref={captchaRef}
+                theme="dark"
+                language={t('i18n.language') === 'de' ? 'de' : 'en'}
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={status.submitting}
+              className="w-full bg-primary py-4 rounded-xl font-label font-bold uppercase tracking-[0.2em] text-white hover:opacity-90 transition-opacity shadow-lg shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {status.submitting ? t('contact.form.sending') : t('contact.form.submit')}
             </button>
+
+            {status.submitted && (
+              <p className="text-green-500 font-label text-sm text-center animate-in">
+                {t('contact.form.success')}
+              </p>
+            )}
+            {status.error && (
+              <p className="text-red-500 font-label text-sm text-center animate-in">
+                {t('contact.form.error')}
+              </p>
+            )}
           </form>
         </div>
       </div>
