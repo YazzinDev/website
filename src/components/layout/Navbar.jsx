@@ -27,10 +27,10 @@ const Navbar = () => {
     <nav className="fixed top-0 w-full z-50 bg-surface/40 backdrop-blur-xl border-b border-outline-variant/10">
       <div className="flex justify-between items-center px-8 py-6 max-w-[1440px] mx-auto w-full">
         <Link to="/" className="text-2xl font-black tracking-tighter text-on-surface hover:text-primary transition-colors duration-300">YAZZIN.DEV</Link>
-        
+
         <div className="hidden md:flex gap-10 items-center">
           {navItems.map((item) => (
-            <a 
+            <a
               key={item.key}
               href={item.href}
               className="font-manrope tracking-tighter font-bold uppercase text-xs text-on-surface/60 hover:text-primary transition-colors duration-300"
@@ -42,23 +42,23 @@ const Navbar = () => {
 
         <div className="flex items-center gap-4 sm:gap-6">
           <div className="relative">
-            <button 
+            <button
               onClick={() => setLangMenuOpen(!langMenuOpen)}
               className="flex items-center gap-1 font-label text-[10px] tracking-widest uppercase text-on-surface/40 hover:text-primary transition-colors duration-300"
             >
               <span>{currentLang}</span>
               <span className="material-symbols-outlined text-sm">expand_more</span>
             </button>
-            
+
             {langMenuOpen && (
               <div className="absolute right-0 mt-2 py-2 w-24 bg-surface-container-high rounded-lg border border-outline-variant/20 transition-all duration-300 z-[60]">
-                <button 
+                <button
                   onClick={() => changeLanguage('en')}
                   className={`w-full px-4 py-2 text-left font-label text-[10px] tracking-widest uppercase hover:text-primary transition-colors ${currentLang === 'EN' ? 'text-primary font-bold' : 'text-on-surface/60'}`}
                 >
                   EN
                 </button>
-                <button 
+                <button
                   onClick={() => changeLanguage('de')}
                   className={`w-full px-4 py-2 text-left font-label text-[10px] tracking-widest uppercase hover:text-primary transition-colors ${currentLang === 'DE' ? 'text-primary font-bold' : 'text-on-surface/60'}`}
                 >
@@ -67,8 +67,8 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          <a 
-            href="/#contact"
+          <a
+            href="/public#contact"
             className="bg-primary text-white px-4 sm:px-6 py-2 rounded-lg font-label font-bold text-[10px] sm:text-sm tracking-widest uppercase active:scale-95 duration-200 shadow-lg shadow-primary/20"
           >
             {t('nav.contact')}

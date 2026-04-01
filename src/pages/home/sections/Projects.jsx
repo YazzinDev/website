@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Link } from 'react-router-dom';
-import gameJamPhoto from '../assets/gamejamwinnerphoto.jpeg';
+import gameJamPhoto from '../../../assets/gamejamwinnerphoto.jpeg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -62,9 +62,9 @@ const Projects = () => {
         <div className="flex justify-center">
           <div ref={cardRef} className="group bg-surface-container-low p-6 rounded-2xl hover:bg-surface-container transition-colors duration-300 gradient-border max-w-xl w-full">
             <div className="aspect-video bg-surface-container overflow-hidden rounded-2xl mb-6 relative">
-              <img 
-                src={gameJamPhoto} 
-                alt="HHU Game Jam Winner" 
+              <img
+                src={gameJamPhoto}
+                alt="HHU Game Jam Winner"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-70 group-hover:opacity-100"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-surface/40 via-transparent to-transparent"></div>

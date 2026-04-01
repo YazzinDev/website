@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import GlowCard from './GlowCard';
+import GlowCard from '../../../components/ui/GlowCard.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -52,10 +52,10 @@ const Tools = () => {
           <span className="font-label text-on-surface-variant tracking-widest uppercase text-xs">{t('tools.label')}</span>
           <h2 className="font-headline text-5xl font-bold mt-4 tracking-tight">{t('tools.title')}</h2>
         </div>
-        
+
         <div className="flex justify-center">
           <div ref={cardRef} className="max-w-xl w-full">
-            <GlowCard 
+            <GlowCard
               title={t('tools.coming_soon.title')}
               icon="construction"
               glowColor="rgba(93, 63, 211, 0.15)"

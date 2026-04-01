@@ -1,7 +1,7 @@
 import { ViteReactSSG } from 'vite-react-ssg'
 import App from './App.jsx'
-import Home from './components/Home.jsx'
-import ProjectDetail from './components/ProjectDetail.jsx'
+import Home from './pages/home/Home.jsx'
+import ProjectDetail from './pages/projects/ProjectDetail.jsx'
 import './i18n'
 import './index.css'
 

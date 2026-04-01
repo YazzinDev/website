@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation, Trans } from 'react-i18next';
-import GlowCard from './GlowCard';
+import GlowCard from '../../../components/ui/GlowCard.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -101,11 +101,11 @@ export default function TechStack() {
               {t('stack.label')}
             </span>
             <h2 className="font-headline text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter mb-6 text-on-surface">
-              <Trans 
-                i18nKey="stack.title" 
-                components={{ 
+              <Trans
+                i18nKey="stack.title"
+                components={{
                   br: <br />
-                }} 
+                }}
               />
             </h2>
           </div>
@@ -121,9 +121,9 @@ export default function TechStack() {
                 accentColor={skill.accentColor}
                 className="h-full w-full"
                 description={
-                  <Trans 
-                    i18nKey={`stack.${skill.key}.desc`} 
-                    components={{ b: <b /> }} 
+                  <Trans
+                    i18nKey={`stack.${skill.key}.desc`}
+                    components={{ b: <b /> }}
                   />
                 }
               />

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { gsap } from 'gsap';
-import gameJamPhoto from '../assets/gamejamwinnerphoto.jpeg';
+import gameJamPhoto from '../../assets/gamejamwinnerphoto.jpeg';
 
 const ProjectDetail = () => {
   const { projectId } = useParams();
@@ -10,7 +10,7 @@ const ProjectDetail = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    
+
     // Animation
     const ctx = gsap.context(() => {
       gsap.from(".animate-in", {
@@ -53,13 +53,13 @@ const ProjectDetail = () => {
           <div className="lg:col-span-5 relative group animate-in">
             <div className="absolute inset-0 bg-primary/10 blur-[100px] rounded-full group-hover:bg-primary/20 transition-all duration-700"></div>
             <div className="glow-card aspect-video bg-surface-container-low rounded-2xl relative overflow-hidden group gradient-border">
-              <img 
-                alt="Terrafix Gameplay" 
-                className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" 
-                src={gameJamPhoto} 
+              <img
+                alt="Terrafix Gameplay"
+                className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
+                src={gameJamPhoto}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
-              
+
               <div className="absolute bottom-8 left-0 right-0 flex flex-wrap justify-end gap-3 px-8">
                 {['GAMEPLAY', 'PROCEDURAL', 'UI/UX'].map(badge => (
                   <div key={badge} className="bg-black/80 backdrop-blur-md px-4 py-1 rounded-full border border-primary/30 shadow-[0_0_15px_rgba(0,0,0,0.4)] flex items-center">
@@ -81,7 +81,7 @@ const ProjectDetail = () => {
               </div>
               <p className="font-body text-on-surface-variant max-w-xs">The core technologies and methodologies that powered Terrafix.</p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 { title: 'Unreal Engine', icon: 'view_in_ar', desc: 'Development with <b>C++</b> for high-performance systems and <b>Blueprints</b> for rapid game mechanics iteration.', color: 'rgba(93, 63, 211, 0.15)' },
@@ -120,7 +120,7 @@ const ProjectDetail = () => {
                     </p>
                   </div>
                 </div>
-                
+
                 <div>
                   <h3 className="font-label text-sm uppercase tracking-widest text-secondary mb-6 flex items-center gap-4">
                     Gameplay & Tech <span className="h-px w-12 bg-secondary/30"></span>

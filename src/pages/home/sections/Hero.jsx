@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation, Trans } from 'react-i18next';
-import heroImage from '../assets/avatar.png';
-import PointGrid from './PointGrid';
+import heroImage from '../../../assets/avatar.png';
+import PointGrid from '../../../components/ui/PointGrid.jsx';
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -24,12 +24,12 @@ const Hero = () => {
             </h2>
           </div>
           <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tighter leading-[0.9] mb-8 max-w-4xl">
-            <Trans 
-              i18nKey="hero.title" 
-              components={{ 
+            <Trans
+              i18nKey="hero.title"
+              components={{
                 gradient: <span className="text-gradient" />,
                 br: <br />
-              }} 
+              }}
             /><span className="cursor">_</span>
           </h1>
           <p className="font-body text-lg md:text-xl text-on-surface-variant max-w-xl leading-relaxed">
