@@ -19,6 +19,7 @@ const Contact = () => {
     error: false
   });
   const [captchaToken, setCaptchaToken] = useState(null);
+  const [isClient, setIsClient] = useState(false);
 
   const onHCaptchaChange = (token) => {
     setCaptchaToken(token);
@@ -36,18 +37,13 @@ const Contact = () => {
 
     const formData = new FormData(e.target);
 
-    // Web3Forms public site key (Zero-Config)
     formData.append("access_key", "6f15a172-b5d7-4a5f-9b9f-81027cf9862c");
-
-    // Web3Forms expects h-captcha-response
     formData.append("h-captcha-response", captchaToken);
 
-    // Zero Config
-    formData.append("captcha", "true");
-
     // Clean up: react-hcaptcha might add g-recaptcha-response automatically
-    // which can confuse the Web3Forms backend.
-    formData.delete("g-recaptcha-response");
+    if (formData.has("g-recaptcha-response")) {
+      formData.delete("g-recaptcha-response");
+    }
 
     // Debugging: Log the cleaned form data
     console.log("Submitting form data:", Object.fromEntries(formData));
@@ -77,6 +73,7 @@ const Contact = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      setIsClient(true);
       // Info section animation
       gsap.from(infoRef.current.children, {
         scrollTrigger: {
@@ -176,13 +173,15 @@ const Contact = () => {
             </div>
 
             <div className="flex justify-center">
-              <HCaptcha
-                sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
-                onVerify={onHCaptchaChange}
-                ref={captchaRef}
-                theme="dark"
-                language={t('i18n.language') === 'de' ? 'de' : 'en'}
-              />
+              {isClient && (
+                <HCaptcha
+                  sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                  onVerify={onHCaptchaChange}
+                  ref={captchaRef}
+                  theme="dark"
+                  language={t('i18n.language') === 'de' ? 'de' : 'en'}
+                />
+              )}
             </div>
 
             <button
