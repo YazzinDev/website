@@ -38,7 +38,6 @@ const Contact = () => {
     const formData = new FormData(e.target);
 
     formData.set("access_key", "6f15a172-b5d7-4a5f-9b9f-81027cf9862c");
-    formData.set("h-captcha-response", captchaToken);
 
     // Clean up: react-hcaptcha might add g-recaptcha-response automatically
     if (formData.has("g-recaptcha-response")) {
