@@ -1,4 +1,5 @@
 import { ViteReactSSG } from 'vite-react-ssg'
+import { Navigate } from 'react-router-dom'
 import App from './App.jsx'
 import Home from './pages/home/Home.jsx'
 import ProjectDetail from './pages/projects/ProjectDetail.jsx'
@@ -16,6 +17,11 @@ const routes = [
         path: 'projects/:projectId',
         element: <ProjectDetail />,
         getStaticPaths: () => ['projects/terrafix']
+      },
+      // Catch-all route for redirection
+      {
+        path: '*',
+        element: <Navigate to="/" replace />
       }
     ]
   }
