@@ -45,7 +45,48 @@
       "title": "Terrafix",
       "badge": "🏆 1. Platz HHU Game Jam",
       "desc": "Ein Factory-Game, in dem Pflanzen gegen Maschinen kämpfen. Entwickelt in 48 Stunden.",
-      "cta": "Projekt ansehen"
+      "cta": "Projekt ansehen",
+      "details": {
+        "notFound": "Projekt nicht gefunden",
+        "backHome": "Zurück zur Startseite",
+        "projectLabel": "Projekt",
+        "jamWinner": "Gewinner des HHU Game Jam 2025",
+        "heroDescription": "Planetary Restoration Reverse-Factorio. Entwickelt während des 48-Stunden-Game-Jams 2025. Nutze die Kraft der Natur, um sterbende Welten, die von Maschinen besetzt sind, zu heilen und zurückzugewinnen.",
+        "gameplayAlt": "Terrafix Gameplay",
+        "badges": {
+          "gameplay": "GAMEPLAY",
+          "procedural": "PROZEDURAL",
+          "uiux": "UI/UX"
+        },
+        "stack": {
+          "label": "DER STACK",
+          "title": "Technische Grundlage",
+          "description": "Die Kerntechnologien und Methoden, die Terrafix antreiben.",
+          "items": {
+            "unreal": { "title": "Unreal Engine", "desc": "Entwicklung mit <b>C++</b> für Hochleistungssysteme und <b>Blueprints</b> für die schnelle Iteration von Spielmechaniken." },
+            "perforce": { "title": "Perforce", "desc": "Teamzusammenarbeit und Versionierung komplexer Assets in einer Echtzeit-Entwicklungsumgebung." },
+            "figma": { "title": "Figma", "desc": "UI/UX-Prototyping und visuelle Konzeptionierung der organischen Benutzeroberfläche." },
+            "shaders": { "title": "Custom Shaders", "desc": "Eigene <b>HLSL</b>-Shader für prozedurale Terrainheilung und atmosphärische Rückgewinnungseffekte." }
+          }
+        },
+        "vision": {
+          "title": "Die Vision",
+          "overview": {
+            "title": "Überblick",
+            "p1": "Terrafix definiert das Factorio-Prinzip neu: Statt grauer Fabriken nutzt du die Kraft der Natur. Als kleiner, abtrünniger Roboter baust du ein komplexes, pflanzenbasiertes Netzwerk auf, das auf einem eigens entwickelten <b>Custom Node System</b> basiert.",
+            "p2": "Jede Pflanze fungiert als lebendes Modul mit individuellen Ein- und Ausgängen, die strategisch verknüpft werden müssen, um Ressourcen umzuwandeln und die Atmosphäre zu reinigen."
+          },
+          "gameplay": {
+            "title": "Gameplay & Technik",
+            "items": {
+              "growth": { "title": "Knotenbasiertes Wachstum", "desc": "Verknüpfung von Pflanzenstrukturen für automatisierte Ressourcenflüsse und Energienetze." },
+              "defense": { "title": "Verteidigung & Begleiter", "desc": "Verteidigung gegen gegnerische Wellen mit Hilfe eines loyalen Begleiters." },
+              "visual": { "title": "Visuelle Rückgewinnung", "desc": "Eigene HLSL-Shader visualisieren, wie mechanische Korrosion blühendem Leben weicht." },
+              "research": { "title": "Forschungstisch", "desc": "Strategische Entwicklung neuer Pflanzen durch gefundene mechanische und organische Artefakte." }
+            }
+          }
+        }
+      }
     }
   },
   "tools": {

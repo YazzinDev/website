@@ -45,7 +45,48 @@
       "title": "Terrafix",
       "badge": "🏆 1st Place HHU Game Jam",
       "desc": "A factory game where plants fight machines. Developed in 48 hours.",
-      "cta": "View Project"
+      "cta": "View Project",
+      "details": {
+        "notFound": "Project Not Found",
+        "backHome": "Back to Home",
+        "projectLabel": "Project",
+        "jamWinner": "HHU Game Jam 2025 Winner",
+        "heroDescription": "Planetary Restoration Reverse-Factorio. Developed during the 48-hour Game Jam 2025. Harness the power of nature to heal and recover dying worlds occupied by machines.",
+        "gameplayAlt": "Terrafix Gameplay",
+        "badges": {
+          "gameplay": "GAMEPLAY",
+          "procedural": "PROCEDURAL",
+          "uiux": "UI/UX"
+        },
+        "stack": {
+          "label": "THE STACK",
+          "title": "Technical Foundation",
+          "description": "The core technologies and methodologies that powered Terrafix.",
+          "items": {
+            "unreal": { "title": "Unreal Engine", "desc": "Development with <b>C++</b> for high-performance systems and <b>Blueprints</b> for rapid game mechanics iteration." },
+            "perforce": { "title": "Perforce", "desc": "Team collaboration and versioning of complex assets in a real-time development environment." },
+            "figma": { "title": "Figma", "desc": "UI/UX prototyping and visual conceptualization of the organic user interface." },
+            "shaders": { "title": "Custom Shaders", "desc": "Custom <b>HLSL</b> shaders for procedural terrain healing and atmospheric reclamation effects." }
+          }
+        },
+        "vision": {
+          "title": "The Vision",
+          "overview": {
+            "title": "Overview",
+            "p1": "Terrafix redefines the Factorio principle: instead of gray factories, you use the power of nature. As a small, renegade robot, you build a complex, plant-based network based on a specially developed <b>Custom Node System</b>.",
+            "p2": "Each plant acts as a living module with individual inputs and outputs that must be strategically linked to transform resources and clean the atmosphere."
+          },
+          "gameplay": {
+            "title": "Gameplay & Tech",
+            "items": {
+              "growth": { "title": "Node-based Growth", "desc": "Linking plant structures for automated resource flows and energy networks." },
+              "defense": { "title": "Defense & Companions", "desc": "Defending against enemy waves with the help of a loyal companion." },
+              "visual": { "title": "Visual Reclamation", "desc": "Custom HLSL shaders visualize mechanical corrosion giving way to blooming life." },
+              "research": { "title": "Research Table", "desc": "Strategic development of new plants through found mechanical and organic artifacts." }
+            }
+          }
+        }
+      }
     }
   },
   "tools": {
