@@ -1,11 +1,29 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { ViteReactSSG } from 'vite-react-ssg'
+import App from './App.jsx'
+import Home from './components/Home.jsx'
+import ProjectDetail from './components/ProjectDetail.jsx'
 import './i18n'
 import './index.css'
-import App from './App.jsx'
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+const routes = [
+  {
+    path: '/',
+    element: <App />,
+    src: 'src/App.jsx',
+    children: [
+      { index: true, element: <Home /> },
+      {
+        path: 'projects/:projectId',
+        element: <ProjectDetail />,
+        getStaticPaths: () => ['projects/terrafix']
+      }
+    ]
+  }
+]
+
+export const createRoot = ViteReactSSG(
+  { routes },
+  ({ router, routes, isClient, initialState }) => {
+    // Client side logic here
+  }
 )

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
   const [langMenuOpen, setLangMenuOpen] = useState(false);
+  const location = useLocation();
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -13,16 +15,18 @@ const Navbar = () => {
   const currentLang = i18n.language.split('-')[0].toUpperCase();
 
   const navItems = [
-    { key: 'about', href: '#about' },
-    { key: 'stack', href: '#tech-stack' },
-    { key: 'work', href: '#projects' },
-    { key: 'tools', href: '#tools' },
+    { key: 'about', href: '/#about' },
+    { key: 'stack', href: '/#tech-stack' },
+    { key: 'work', href: '/#projects' },
+    { key: 'tools', href: '/#tools' },
   ];
+
+  const isHomePage = location.pathname === '/';
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-surface/40 backdrop-blur-xl border-b border-outline-variant/10">
       <div className="flex justify-between items-center px-8 py-6 max-w-[1440px] mx-auto w-full">
-        <a href="#about" className="text-2xl font-black tracking-tighter text-on-surface hover:text-primary transition-colors duration-300">YAZZIN.DEV</a>
+        <Link to="/" className="text-2xl font-black tracking-tighter text-on-surface hover:text-primary transition-colors duration-300">YAZZIN.DEV</Link>
         
         <div className="hidden md:flex gap-10 items-center">
           {navItems.map((item) => (
@@ -64,7 +68,7 @@ const Navbar = () => {
             )}
           </div>
           <a 
-            href="#contact"
+            href="/#contact"
             className="bg-primary text-white px-4 sm:px-6 py-2 rounded-lg font-label font-bold text-[10px] sm:text-sm tracking-widest uppercase active:scale-95 duration-200 shadow-lg shadow-primary/20"
           >
             {t('nav.contact')}

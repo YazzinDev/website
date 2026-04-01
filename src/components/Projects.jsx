@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Link } from 'react-router-dom';
 import gameJamPhoto from '../assets/gamejamwinnerphoto.jpeg';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -73,9 +74,9 @@ const Projects = () => {
             </div>
             <h3 className="font-headline text-2xl font-bold mb-2 text-on-surface">{t('projects.terrafix.title')}</h3>
             <p className="font-body text-on-surface/70 text-sm mb-6">{t('projects.terrafix.desc')}</p>
-            <a className="inline-flex items-center justify-center gap-2 w-full bg-primary text-white font-label font-bold py-3 rounded-lg text-sm tracking-widest uppercase hover:brightness-110 transition-all shadow-lg shadow-primary/20 cursor-pointer" href="https://yazzin.dev/projects/terrafix.html">
+            <Link className="inline-flex items-center justify-center gap-2 w-full bg-primary text-white font-label font-bold py-3 rounded-lg text-sm tracking-widest uppercase hover:brightness-110 transition-all shadow-lg shadow-primary/20 cursor-pointer" to="/projects/terrafix">
               <span>{t('projects.terrafix.cta')}</span> <span className="material-symbols-outlined text-sm">arrow_outward</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
