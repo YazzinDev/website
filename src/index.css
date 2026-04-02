@@ -66,25 +66,72 @@
 @layer base {
   body {
     @apply font-body bg-surface text-on-surface antialiased;
-    background-color: #131316;
-    color: #e4e1e6;
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   h1, h2, h3, h4 {
-    @apply font-headline;
+    @apply font-headline text-on-surface;
   }
 
   b, strong {
     @apply font-bold text-on-surface;
   }
+
+  section {
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+  }
 }
 
-/* Test-Utility um sicherzugehen, dass Tailwind scannt */
-.debug-grid {
-  @apply grid grid-cols-1 md:grid-cols-4 gap-6 border-2 border-red-500;
+.light {
+  --color-surface: #ffffff;
+  --color-background: #ffffff;
+  --color-on-background: #131316;
+  --color-on-surface: #131316;
+  --color-surface-container: #f0f0f4;
+  --color-surface-container-low: #ffffff; 
+  --color-surface-container-high: #e2e2e6;
+  --color-surface-container-lowest: #f8f9fb; 
+  --color-surface-container-highest: #dcdce0;
+  --color-on-surface-variant: #44474e;
+  --color-outline-variant: #e0e0e8;
+  
+  /* High-Contrast Accents for Light Mode Accessibility */
+  --color-primary: #5D3FD3;      /* Keep brand violet */
+  --color-secondary: #006684;    /* Darker Teal/Blue */
+  --color-tertiary: #8d4a00;     /* Darker Orange/Amber */
+  
+  --glow-color: rgba(93, 63, 211, 0.03);
 }
 
-/* Custom Utilities */
+/* Accessibility: Elevation and Hover fixes for light mode */
+.light .glow-card, 
+.light .bg-surface-container-low {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+.light .glow-card:hover {
+  background-color: #f8f9ff !important;
+}
+
+/* Ensure ribbon text is always white */
+.glow-card .bg-primary {
+  color: #ffffff !important;
+}
+
+.light .text-gradient {
+  background: linear-gradient(135deg, #5D3FD3 0%, #3b2885 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.light .gradient-border::before {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1) 0%, rgba(93, 63, 211, 0.2) 15%, transparent 50%);
+}
+
 .text-gradient {
   background: linear-gradient(135deg, #c9bfff 0%, #5D3FD3 100%);
   -webkit-background-clip: text;

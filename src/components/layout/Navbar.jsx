@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
+import { useTheme } from '../../ThemeContext.jsx';
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
+  const { isDarkMode, toggleTheme } = useTheme();
   const [langMenuOpen, setLangMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -41,6 +43,17 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-4 sm:gap-6">
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="w-10 h-10 rounded-full flex items-center justify-center text-on-surface/40 hover:text-primary hover:bg-surface-container transition-all duration-300 active:scale-90"
+            aria-label="Toggle theme"
+          >
+            <span className="material-symbols-outlined text-[20px]">
+              {isDarkMode ? 'light_mode' : 'dark_mode'}
+            </span>
+          </button>
+
           <div className="relative">
             <button
               onClick={() => setLangMenuOpen(!langMenuOpen)}
@@ -68,7 +81,7 @@ const Navbar = () => {
             )}
           </div>
           <a
-            href="/public#contact"
+            href="/#contact"
             className="bg-primary text-white px-4 sm:px-6 py-2 rounded-lg font-label font-bold text-[10px] sm:text-sm tracking-widest uppercase active:scale-95 duration-200 shadow-lg shadow-primary/20"
           >
             {t('nav.contact')}

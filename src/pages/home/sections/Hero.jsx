@@ -2,14 +2,18 @@ import React from 'react';
 import { useTranslation, Trans } from 'react-i18next';
 import heroImage from '../../../assets/avatar.png';
 import PointGrid from '../../../components/ui/PointGrid.jsx';
+import { useTheme } from '../../../ThemeContext.jsx';
 
 const Hero = () => {
   const { t } = useTranslation();
+  const { isDarkMode } = useTheme();
+
+  const dotColor = isDarkMode ? "rgba(93, 63, 211, 0.3)" : "rgba(93, 63, 211, 0.15)";
 
   return (
     <section className="min-h-screen flex items-center relative overflow-hidden px-6 sm:px-8 pt-32 pb-20" id="about">
       {/* Animated Dot Grid Background */}
-      <PointGrid dotColor="rgba(93, 63, 211, 0.3)" />
+      <PointGrid dotColor={dotColor} />
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/10 blur-[120px] rounded-full"></div>
       <div className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-secondary/5 blur-[150px] rounded-full"></div>
 
@@ -54,9 +58,9 @@ const Hero = () => {
             <img
               src={heroImage}
               alt="Yassin Kuczma"
-              className="w-full h-full object-cover object-top opacity-60 group-hover:scale-110 transition-transform duration-700"
+              className={`w-full h-full object-cover object-top transition-all duration-700 group-hover:scale-110 ${isDarkMode ? 'opacity-60' : 'opacity-100'}`}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+            <div className={`absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent ${isDarkMode ? 'opacity-100' : 'opacity-30'}`}></div>
           </div>
         </div>
       </div>

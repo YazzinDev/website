@@ -72,10 +72,10 @@ const ProjectDetail = () => {
             <div className="glow-card aspect-video bg-surface-container-low rounded-2xl relative overflow-hidden group gradient-border">
               <img
                 alt={t('projects.terrafix.details.gameplayAlt')}
-                className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
+                className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${isDarkMode ? 'opacity-80' : 'opacity-100'}`}
                 src={gameJamPhoto}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+              <div className={`absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent ${isDarkMode ? 'opacity-100' : 'opacity-40'}`}></div>
 
               <div className="absolute bottom-8 left-0 right-0 flex flex-wrap justify-end gap-3 px-8">
                 {Object.values(t('projects.terrafix.details.badges', { returnObjects: true })).map(badge => (
