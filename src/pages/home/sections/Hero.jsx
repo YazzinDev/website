@@ -20,7 +20,7 @@ const Hero = () => {
       <div className="max-w-[1440px] mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-12 items-center relative z-10">
         <div className="md:col-span-8">
           <div className="mb-8">
-            <span className="font-label text-secondary tracking-[0.3em] uppercase text-[10px] md:text-xs mb-4 md:mb-6 block">
+            <span className="font-label text-secondary tracking-[0.3em] uppercase text-xs md:text-sm mb-4 md:mb-6 block">
               {t('hero.role')}
             </span>
             <h2 className="font-headline text-2xl md:text-3xl lg:text-4xl font-bold text-on-surface mb-2">
@@ -58,7 +58,7 @@ const Hero = () => {
             <img
               src={heroImage}
               alt="Yassin Kuczma"
-              className={`w-full h-full object-cover object-top transition-all duration-700 group-hover:scale-110 ${isDarkMode ? 'opacity-60' : 'opacity-100'}`}
+              className={`w-full h-full object-cover object-top transition-all duration-700 group-hover:scale-110 ${isDarkMode ? 'opacity-85' : 'opacity-100'}`}
             />
             <div className={`absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent ${isDarkMode ? 'opacity-100' : 'opacity-30'}`}></div>
           </div>
