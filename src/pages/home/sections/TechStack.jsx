@@ -120,6 +120,7 @@ export default function TechStack() {
                 glowColor={skill.color}
                 accentColor={skill.accentColor}
                 className="h-full w-full"
+                badge={skill.key === 'java' ? 'CORE' : null}
                 description={
                   <Trans
                     i18nKey={`stack.${skill.key}.desc`}

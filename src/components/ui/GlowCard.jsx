@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GlowCard = ({ title, description, icon, glowColor, accentColor = "primary", className = "" }) => {
+const GlowCard = ({ title, description, icon, glowColor, accentColor = "primary", className = "", badge }) => {
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();
     e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
@@ -15,11 +15,19 @@ const GlowCard = ({ title, description, icon, glowColor, accentColor = "primary"
 
   return (
     <div
-      className={`glow-card bg-surface-container-low p-10 flex flex-col items-center text-center group gradient-border rounded-2xl transition-colors duration-300 hover:bg-surface-container-highest ${className}`}
+      className={`glow-card bg-surface-container-low p-10 flex flex-col items-center text-center group gradient-border rounded-2xl transition-colors duration-300 hover:bg-surface-container-highest relative ${className}`}
       style={{ '--glow-color': glowColor }}
       onMouseMove={handleMouseMove}
     >
-      <div className="shine-sweep"></div>
+      <div className="shine-sweep !absolute"></div>
+
+      {badge && (
+        <div className="!absolute -top-[2px] -right-[2px] w-24 h-24 overflow-hidden rounded-tr-2xl pointer-events-none z-50">
+          <div className="absolute top-5 -right-8 w-32 bg-primary text-[8px] font-black uppercase tracking-[0.3em] py-1 rotate-45 text-center shadow-[0_0_15px_color-mix(in_srgb,var(--color-primary),transparent_30%)] border-y border-white/20">
+            {badge}
+          </div>
+        </div>
+      )}
 
       {icon && (
         <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 transition-all duration-300 ${accentClasses[accentColor]}`}>

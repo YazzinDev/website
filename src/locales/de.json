@@ -18,29 +18,35 @@
     "label": "Kernkompetenzen",
     "title": "Auf Performance ausgelegt,<br/>für Skalierung entwickelt.",
     "java": {
-      "title": "Java",
-      "desc": "Architektur <b>modularer, leistungsstarker Backends</b> mit <b>Spring Boot</b>, Fokus auf <b>Skalierbarkeit</b> und <b>sauberes Design</b>."
+      "title": "Java & Backend",
+      "desc": "Architektur <b>leistungsstarker Backends im Enterprise-Bereich</b> mit <b>Spring Boot</b>. Fokus auf <b>Skalierbarkeit, Modularität</b> und <b>robustes Systemdesign</b>."
     },
     "web": {
-      "title": "Web & Fullstack",
+      "title": "Fullstack Web",
       "desc": "Erstellung <b>moderner, responsiver Nutzererlebnisse</b> und <b>nahtloser REST-APIs</b>, optimiert für <b>Performance</b> und <b>Clean Code</b>."
     },
     "devops": {
-      "title": "DevOps",
+      "title": "Cloud & DevOps",
       "desc": "Automatisierung der Auslieferung mit <b>Docker</b> und <b>CI/CD Pipelines</b> sowie Wartung hochintegritärer <b>PostgreSQL</b> Datenbanken."
     },
     "game": {
-      "title": "Game Development",
+      "title": "Spielentwicklung",
       "desc": "Entwicklung <b>immersiver Mechaniken</b> und komplexer <b>Gameplay-Systeme</b> in der <b>Unreal Engine</b>, Verbindung von technischem <b>C++</b> mit <b>kreativem Design</b>."
     },
     "tags": [
-      "Scrum", "Agile Entwicklung", "Agentic Coding", "Softwarearchitektur", "Microservices", "Deployment", "Test Driven Development"
+      "Spring Boot", "Axon Framework", "PostgreSQL", "Docker", "REST APIs", "Microservices", "Clean Architecture", "Test Driven Development"
     ]
   },
   "projects": {
     "label": "ENTWICKLUNG & ENGINEERING",
     "title": "Ausgewählte Arbeiten",
-    "description": "Backend-Architekturen, Engine-Entwicklung und Open-Source-Beiträge.",
+    "description": "Backend-Architekturen, Universitäts-Software und High-Performance-Systeme.",
+    "exambyte": {
+      "title": "ExamByte",
+      "badge": "Universitäts-Plattform",
+      "desc": "Ein robustes Prüfungssystem für den Hochschulbereich. Echtzeit-Quizverwaltung und automatisierte Auswertungssysteme.",
+      "cta": "Projekt erkunden"
+    },
     "terrafix": {
       "title": "Terrafix",
       "badge": "🏆 1. Platz HHU Game Jam",
