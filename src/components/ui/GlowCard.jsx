@@ -22,8 +22,8 @@ const GlowCard = ({ title, description, icon, glowColor, accentColor = "primary"
       <div className="shine-sweep !absolute"></div>
 
       {badge && (
-        <div className="!absolute -top-[2px] -right-[2px] w-24 h-24 overflow-hidden rounded-tr-2xl pointer-events-none z-50">
-          <div className="absolute top-5 -right-8 w-32 bg-primary text-[8px] font-black uppercase tracking-[0.3em] py-1 rotate-45 text-center shadow-[0_0_15px_color-mix(in_srgb,var(--color-primary),transparent_30%)] border-y border-white/20">
+        <div className="!absolute -top-[2px] -right-[2px] w-30 h-30 overflow-hidden rounded-tr-2xl pointer-events-none z-50">
+          <div className="absolute top-6 -right-9 w-36 bg-primary text-[12px] font-bold uppercase tracking-wider py-1 rotate-45 text-center shadow-[0_0_20px_color-mix(in_srgb,var(--color-primary),transparent_25%)] border-y border-white/20">
             {badge}
           </div>
         </div>

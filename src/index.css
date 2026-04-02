@@ -133,9 +133,17 @@
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #c9bfff 0%, #5D3FD3 100%);
+  background: linear-gradient(135deg, #e5deff 0%, #7c5af7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.font-body {
+  @apply text-on-surface/90;
+}
+
+.text-on-surface-variant {
+  @apply text-on-surface/75;
 }
 
 .gradient-border {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '../../ThemeContext.jsx';
@@ -7,7 +7,33 @@ const Navbar = () => {
   const { t, i18n } = useTranslation();
   const { isDarkMode, toggleTheme } = useTheme();
   const [langMenuOpen, setLangMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
   const location = useLocation();
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    const sections = ['about', 'tech-stack', 'projects', 'tools'];
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -17,13 +43,11 @@ const Navbar = () => {
   const currentLang = i18n.language.split('-')[0].toUpperCase();
 
   const navItems = [
-    { key: 'about', href: '/#about' },
-    { key: 'stack', href: '/#tech-stack' },
-    { key: 'work', href: '/#projects' },
-    { key: 'tools', href: '/#tools' },
+    { key: 'about', id: 'about', href: '/#about' },
+    { key: 'stack', id: 'tech-stack', href: '/#tech-stack' },
+    { key: 'work', id: 'projects', href: '/#projects' },
+    { key: 'tools', id: 'tools', href: '/#tools' },
   ];
-
-  const isHomePage = location.pathname === '/';
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-surface/40 backdrop-blur-xl border-b border-outline-variant/10">
@@ -35,9 +59,16 @@ const Navbar = () => {
             <a
               key={item.key}
               href={item.href}
-              className="font-manrope tracking-tighter font-bold uppercase text-xs text-on-surface/60 hover:text-primary transition-colors duration-300"
+              className={`font-manrope tracking-tighter font-bold uppercase text-xs transition-colors duration-300 relative ${
+                activeSection === item.id 
+                  ? 'text-primary' 
+                  : 'text-on-surface/80 hover:text-primary'
+              }`}
             >
               {t(`nav.${item.key}`)}
+              {activeSection === item.id && (
+                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary rounded-full" />
+              )}
             </a>
           ))}
         </div>
