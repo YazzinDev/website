@@ -16,7 +16,7 @@ const routes = [
       {
         path: 'projects/:projectId',
         element: <ProjectDetail />,
-        getStaticPaths: () => ['projects/terrafix']
+        getStaticPaths: () => ['projects/terrafix', 'projects/exambyte']
       },
       // Catch-all route for redirection
       {

@@ -45,7 +45,45 @@
       "title": "ExamByte",
       "badge": "Universitäts-Plattform",
       "desc": "Ein robustes Prüfungssystem für den Hochschulbereich. Echtzeit-Quizverwaltung und automatisierte Auswertungssysteme.",
-      "cta": "Projekt erkunden"
+      "cta": "Projekt erkunden",
+      "details": {
+        "projectLabel": "Projekt",
+        "description": "ExamByte wurde entwickelt, um Altsysteme für die Klausurzulassung in Programmierpraktika abzulösen. Es schließt die Lücke zwischen automatisierten Tests und manueller Bewertung.",
+        "heroDescription": "Skalierbares Prüfungsmanagementsystem. Entwickelt mit Java und Spring Boot, optimiert ExamByte den gesamten Prüfungszyklus - von der sicheren GitHub-basierten Authentifizierung bis hin zur automatisierten MC-Auswertung.",
+        "badges": {
+          "architecture": "ONION ARCH",
+          "ddd": "DDD",
+          "security": "OAuth 2.0"
+        },
+        "stack": {
+          "label": "DIE ARCHITEKTUR",
+          "title": "Auf Einfachheit ausgelegt",
+          "description": "Strikte Einhaltung der Onion-Architektur und Domain-Driven Design garantiert ein wartbares System mit hoher Integrität.",
+          "items": {
+            "spring": { "title": "Spring Boot", "desc": "Nutzung von <b>Spring Security</b> für OAuth und <b>Spring Data</b> für robuste Persistenzschichten." },
+            "auth": { "title": "GitHub OAuth", "desc": "Sichere, entwicklerzentrierte Authentifizierung, direkt in studentische Accounts integriert." },
+            "architecture": { "title": "Clean Design", "desc": "Domain-zentriertes Design, verifiziert mit <b>ArchUnit</b> zur Vermeidung von Layer-Leaks." },
+            "deployment": { "title": "Docker", "desc": "Containerisiertes Deployment mit <b>Docker Compose</b> für konsistente Umgebungsparität." }
+          }
+        },
+        "vision": {
+          "title": "System-Funktionen",
+          "overview": {
+            "title": "Rollenverwaltung",
+            "p1": "ExamByte implementiert ein mehrstufiges Autorisierungssystem. <b>Studierende</b> bearbeiten Tests, <b>Korrektoren</b> bewerten Freitextantworten und <b>Organisatoren</b> steuern den gesamten Prozess.",
+            "p2": "Alle Rollenkonfigurationen werden über externe Konfigurationsdateien verwaltet, was dynamische Updates ohne Systemstillstand ermöglicht."
+          },
+          "gameplay": {
+            "title": "Prüfungsablauf",
+            "items": {
+              "automatic": { "title": "Auto-Auswertung", "desc": "Multiple-Choice-Fragen werden in Echtzeit mit flexiblen Algorithmen für Teilpunkte ausgewertet." },
+              "manual": { "title": "Manuelle Korrektur", "desc": "Korrektoren geben detailliertes Feedback und Punkte für komplexe Freitextantworten." },
+              "admission": { "title": "Zulassungs-Tracking", "desc": "Ein dynamisches Dashboard zeigt den aktuellen Zulassungsstatus basierend auf bisherigen Leistungen." },
+              "reporting": { "title": "Analyse", "desc": "Detaillierte Berichte für Organisatoren zur Erkennung von Problemen in der Aufgabenstellung." }
+            }
+          }
+        }
+      }
     },
     "terrafix": {
       "title": "Terrafix",

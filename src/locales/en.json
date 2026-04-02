@@ -45,7 +45,45 @@
       "title": "ExamByte",
       "badge": "University Platform",
       "desc": "A robust examination system for higher education. Real-time quiz management and automated evaluation systems.",
-      "cta": "Explore Project"
+      "cta": "Explore Project",
+      "details": {
+        "projectLabel": "Project",
+        "description": "ExamByte was developed to replace legacy systems for exam admission in programming labs. It bridges the gap between automated testing and manual assessment, providing a seamless workflow for students, correctors, and professors.",
+        "heroDescription": "Scalable Examination Management System. Built with Java and Spring Boot, ExamByte streamlines the entire exam lifecycle—from secure GitHub-based authentication to automated MC-evaluation and manual free-text correction with integrated feedback loops.",
+        "badges": {
+          "architecture": "ONION ARCH",
+          "ddd": "DDD",
+          "security": "OAuth 2.0"
+        },
+        "stack": {
+          "label": "THE ARCHITECTURE",
+          "title": "Built for Simplicity",
+          "description": "Strict adherence to Onion Architecture and Domain-Driven Design ensures a maintainable and high-integrity system.",
+          "items": {
+            "spring": { "title": "Spring Boot", "desc": "Utilizing <b>Spring Security</b> for OAuth and <b>Spring Data</b> for robust persistence layers." },
+            "auth": { "title": "GitHub OAuth", "desc": "Secure, developer-centric authentication integrated directly with student accounts." },
+            "architecture": { "title": "Clean Design", "desc": "Domain-centric design verified with <b>ArchUnit</b> to prevent layer leakage." },
+            "deployment": { "title": "Docker", "desc": "Containerized deployment using <b>Docker Compose</b> for consistent environment parity." }
+          }
+        },
+        "vision": {
+          "title": "System Features",
+          "overview": {
+            "title": "Role Management",
+            "p1": "ExamByte implements a multi-tier authorization system. <b>Students</b> can take exams, <b>Correctors</b> assess free-text answers, and <b>Organizers</b> oversee the entire process including CSV exports and result publishing.",
+            "p2": "All role configurations are managed via externalized configuration files, allowing for dynamic updates without system downtime or recompilation."
+          },
+          "gameplay": {
+            "title": "Examination Flow",
+            "items": {
+              "automatic": { "title": "Auto-Evaluation", "desc": "Multiple Choice questions are evaluated in real-time with flexible partial-credit algorithms." },
+              "manual": { "title": "Manual Correction", "desc": "Correctors provide detailed feedback and scoring for complex free-text answers." },
+              "admission": { "title": "Admission Tracking", "desc": "A dynamic dashboard showing current admission status based on historical test performance." },
+              "reporting": { "title": "Analytics", "desc": "Detailed reporting for organizers to detect issues in question clarity or student understanding." }
+            }
+          }
+        }
+      }
     },
     "terrafix": {
       "title": "Terrafix",
