@@ -77,7 +77,7 @@ const Navbar = () => {
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
-            className="w-10 h-10 rounded-full flex items-center justify-center text-on-surface/40 hover:text-primary hover:bg-surface-container transition-all duration-300 active:scale-90"
+            className="w-10 h-10 rounded-full flex items-center justify-center text-on-surface/70 hover:text-primary hover:bg-surface-container transition-all duration-300 active:scale-90 cursor-pointer"
             aria-label="Toggle theme"
           >
             <span className="material-symbols-outlined text-[20px]">
@@ -88,7 +88,7 @@ const Navbar = () => {
           <div className="relative">
             <button
               onClick={() => setLangMenuOpen(!langMenuOpen)}
-              className="flex items-center gap-1 font-label text-[10px] tracking-widest uppercase text-on-surface/40 hover:text-primary transition-colors duration-300"
+              className="flex items-center gap-1 font-label text-[11px] tracking-widest uppercase text-on-surface/70 hover:text-primary transition-colors duration-300 cursor-pointer"
             >
               <span>{currentLang}</span>
               <span className="material-symbols-outlined text-sm">expand_more</span>

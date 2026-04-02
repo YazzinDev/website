@@ -18,10 +18,11 @@ const Footer = () => {
         {/* Back to Top Button */}
         <button
           onClick={scrollToTop}
-          className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-surface-container-high border border-outline-variant/20 rounded-full flex items-center justify-center text-on-surface/40 hover:text-primary hover:border-primary/50 hover:shadow-[0_0_20px_rgba(93,63,211,0.2)] transition-all duration-300 group active:scale-90"
+          className="absolute -top-5 left-1/2 -translate-x-1/2 px-6 py-2 bg-surface-container-high border border-outline-variant/30 rounded-full flex items-center gap-2 text-on-surface/80 hover:text-primary hover:border-primary/50 hover:shadow-[0_0_20px_rgba(93,63,211,0.15)] transition-all duration-300 group active:scale-95 cursor-pointer"
           aria-label="Back to top"
         >
-          <span className="material-symbols-outlined group-hover:-translate-y-1 transition-transform">arrow_upward</span>
+          <span className="font-label text-xs uppercase tracking-widest font-bold">{t('footer.back_to_top')}</span>
+          <span className="material-symbols-outlined text-sm group-hover:-translate-y-0.5 transition-transform">arrow_upward</span>
         </button>
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 w-full">

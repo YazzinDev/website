@@ -158,6 +158,7 @@
     }
   },
   "footer": {
-    "copyright": "© {{year}} Yazzin. Alle Rechte vorbehalten."
+    "copyright": "© {{year}} Yassin Kuczma. Alle Rechte vorbehalten.",
+    "back_to_top": "Nach Oben"
   }
 }
